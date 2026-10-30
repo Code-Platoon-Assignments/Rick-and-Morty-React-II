@@ -5,13 +5,27 @@ By the end of this assignment your project should meet the following requirement
   - AboutPage.jsx should render general about me information about the show. (Maybe use an API to render this information?)
   - CharactersPage.jsx should render a Card BootStrap Component (displaying image and information of said character) for every character within the [Rick and Morty API](https://rickandmortyapi.com/)
     - Maybe use useState, useEffect, axios, async, map, conditional rendering?
-  - Routes for each page mentioned above within Reacts Browser Router
+  - Routes for each page mentioned above within React Router's browser router (`children` of App in `router.jsx`)
   - NotFound.jsx should render an error message letting the user know this page does not exist
-  - Error Route to render NotFound.jsx
+  - A catch-all route (`path: '*'`) to render NotFound.jsx for any URL that doesn't match a page (an `errorElement` is different: it shows when a page throws an error)
   - NavBar.jsx should allow users to navigate your project
   - Testing with Cypress to ensure all requirements are being met
   - Styling from React BootStrap or Tailwind.css
   - Have fun!
+
+## Setup
+
+Keep working in your project from Rick and Morty React (Vite + `react-router`). From the project folder, install what this part needs:
+
+```sh
+npm install react-bootstrap bootstrap axios
+npm install -D cypress
+```
+
+- React Bootstrap: add `import 'bootstrap/dist/css/bootstrap.min.css'` to `src/main.jsx`, above `import './index.css'`.
+- Tailwind instead (or as well): set it up as in the Tailwind and BootStrap project; if you use both, `src/index.css` needs `@import "tailwindcss" important;` so your Tailwind classes win over Bootstrap's.
+- Cypress: start the app with `npm run dev`, then run `npx cypress open` in a second terminal and choose E2E Testing (it creates `cypress.config.js` for you). Set `baseUrl: 'http://localhost:5173'` in its `e2e` section so `cy.visit('/')` works.
+- Links in `NavBar.jsx` should be React Router `<Link>`s (from `'react-router'`), not `<a href>`s, so the page doesn't reload.
   
 > [!WARNING]
 > The Rick and Morty API uses **pagination**.
